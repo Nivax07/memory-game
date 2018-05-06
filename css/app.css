@@ -25,7 +25,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px 0;
+  padding-top: 40px;
+  overflow-y: auto;
   flex-direction: column;
 }
 
