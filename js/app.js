@@ -31,7 +31,19 @@ function shuffle(array) {
     return array;
 }
 
-// Initial Game
+/*
+ * set up the event listener for a card. If a card is clicked:
+ *  - display the card's symbol (put this functionality in another function that you call from this one)
+ *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+ *  - if the list already has another card, check to see if the two cards match
+ *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ */
+
+
+// Start Game
 function startGame() {
 	var cards = shuffle(cardsSymbols);
 	$deck.empty();
@@ -47,19 +59,9 @@ function startGame() {
 	resetTimer(currentTimer);
 	second = 0;
 	$timer.text(`${second}`)
-	initTime();
+	startTimer();
 };
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
 
 // Set Rating and final Score
 function setRating(moves) {
@@ -77,25 +79,13 @@ function setRating(moves) {
 	return { score: rating };
 };
 
-// SweetAlert2 (https://github.com/sweetalert2/sweetalert2)
-
-// Timer
-
-var simpleTimer = 5;
-
-var interval = setInterval(function() {
-    simpleTimer--;
-    $('.timer').text(simpleTimer);
-    if (simpleTimer === 0) clearInterval(interval);
-}, 1000);
+// SweetAlert2 (https://sweetalert2.github.io)
 
 // End Game
 function endGame(moves, score) {
 	swal({
-		allowEscapeKey: false,
-		allowOutsideClick: false,
 		title: 'Congratulations! You Won!',
-		html: '<span>With ' + moves + ' Moves and ' + score + ' Stars in ' + second + ' Seconds.<br>Woooooo!</span>',
+		html: '<span>With ' + moves + ' Moves and ' + score + ' Stars.<br>Woooooo!</span>',
 		type: 'success',
 		position: 'center',
 		confirmButtonColor: '#02ccba',
@@ -117,14 +107,12 @@ function endGame(moves, score) {
 // Restart Game
 $restart.bind('click', function () {
 	swal({
-		allowEscapeKey: false,
-		allowOutsideClick: false,
 		title: 'Are you sure?',
 		text: "Your progress will be Lost!",
 		type: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#02ccba',
-		cancelButtonColor: '#f95c3c',
+		cancelButtonColor: '#aa7ecd',
 		confirmButtonText: 'Yes, Restart Game!'
 	}).then((result) => {
 		if (result.value) {
@@ -188,7 +176,7 @@ var addCardListener = function () {
 };
 
 
-function initTime() {
+function startTimer() {
 	currentTimer = setInterval(function () {
 		$timer.text(`${second}`)
 		second = second + 1
