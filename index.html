@@ -5,9 +5,9 @@
     <meta charset="utf-8">
 	<title>Udacity Memory Game</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
-	<link rel='stylesheet' href='https://cdn.jsdelivr.net/sweetalert2/3.0.3/sweetalert2.min.css'>
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Press+Start+2P" rel="stylesheet">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.19.3/sweetalert2.css'>
     <link rel="stylesheet" href="css/app.css">
     <link rel="shortcut icon" href="favicon.ico" />
     <meta name="theme-color" content="#02b3e4" />
@@ -24,15 +24,16 @@
 				<li><i class="fa fa-star"></i></li>
 			</ul>
 			<span class="moves">0</span> Moves
-			| Time: <span class="timer">0</span> s
-			<div class="restart">
-				<i class="fa fa-repeat"></i>
-			</div>
+			<span class="bar">|</span> Time: <span class="timer">0</span> s
+			<br>
+			<span class="restart">
+				<i class="fas fa-redo"></i> Restart Game
+			</span>
 		</section>
 		<ul class="deck"></ul>
 	</div>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-	<script src='https://cdn.jsdelivr.net/sweetalert2/3.0.3/sweetalert2.min.js'></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.19.3/sweetalert2.js"></script>
 	<script src="js/app.js"></script>
 
 </body>

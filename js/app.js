@@ -1,4 +1,4 @@
-let symbols = ['bell', 'bell', 'lemon', 'lemon', 'life-ring', 'life-ring', 'moon', 'moon', 'sun', 'sun', 'user', 'user', 'save', 'save', 'gem', 'gem'],
+let cardsSymbols = ['bell', 'bell', 'lemon', 'lemon', 'life-ring', 'life-ring', 'moon', 'moon', 'sun', 'sun', 'user', 'user', 'save', 'save', 'gem', 'gem'],
 	opened = [],
 	match = 0,
 	moves = 0,
@@ -11,28 +11,29 @@ let symbols = ['bell', 'bell', 'lemon', 'lemon', 'life-ring', 'life-ring', 'moon
 	currentTimer,
 	second = 0,
 	$timer = $('.timer'),
-	totalCard = symbols.length / 2,
+	totalCard = cardsSymbols.length / 2,
 	rank3stars = 10,
 	rank2stars = 16,
 	rank1stars = 20;
 
+// Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-	var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length, temporaryValue, randomIndex;
 
-	while (0 !== currentIndex) {
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
-		temporaryValue = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = temporaryValue;
-	}
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
 
-	return array;
+    return array;
 }
 
 // Initial Game
 function startGame() {
-	var cards = shuffle(symbols);
+	var cards = shuffle(cardsSymbols);
 	$deck.empty();
 	match = 0;
 	moves = 0;
@@ -48,6 +49,17 @@ function startGame() {
 	$timer.text(`${second}`)
 	initTime();
 };
+
+/*
+ * set up the event listener for a card. If a card is clicked:
+ *  - display the card's symbol (put this functionality in another function that you call from this one)
+ *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+ *  - if the list already has another card, check to see if the two cards match
+ *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ */
 
 // Set Rating and final Score
 function setRating(moves) {
@@ -65,6 +77,18 @@ function setRating(moves) {
 	return { score: rating };
 };
 
+// SweetAlert2 (https://github.com/sweetalert2/sweetalert2)
+
+// Timer
+
+var simpleTimer = 5;
+
+var interval = setInterval(function() {
+    simpleTimer--;
+    $('.timer').text(simpleTimer);
+    if (simpleTimer === 0) clearInterval(interval);
+}, 1000);
+
 // End Game
 function endGame(moves, score) {
 	swal({
@@ -73,11 +97,19 @@ function endGame(moves, score) {
 		title: 'Congratulations! You Won!',
 		text: 'With ' + moves + ' Moves and ' + score + ' Stars in ' + second + ' Seconds.\n Woooooo!',
 		type: 'success',
+		position: 'center',
 		confirmButtonColor: '#02ccba',
 		confirmButtonText: 'Play again!'
-	}).then(function (isConfirm) {
-		if (isConfirm) {
-			startGame();
+	}).then((result) => {
+		if (result.value) {
+			swal({
+				title: 'New Game',
+				type: 'success',
+				text: 'Your game will start in 3 seconds.',
+				showConfirmButton: false,
+				timer: 3000
+			})
+			setTimeout(startGame, 3000);
 		}
 	})
 }
@@ -85,8 +117,8 @@ function endGame(moves, score) {
 // Restart Game
 $restart.bind('click', function () {
 	swal({
-		allowEscapeKey: true,
-		allowOutsideClick: true,
+		allowEscapeKey: false,
+		allowOutsideClick: false,
 		title: 'Are you sure?',
 		text: "Your progress will be Lost!",
 		type: 'warning',
@@ -94,13 +126,21 @@ $restart.bind('click', function () {
 		confirmButtonColor: '#02ccba',
 		cancelButtonColor: '#f95c3c',
 		confirmButtonText: 'Yes, Restart Game!'
-	}).then(function (isConfirm) {
-		if (isConfirm) {
-			startGame();
+	}).then((result) => {
+		if (result.value) {
+			swal({
+				title: 'Restarted',
+				type: 'success',
+				text: 'Your game will start in 3 seconds.',
+				showConfirmButton: false,
+				timer: 3000
+			})
+			setTimeout(startGame, 3000);
 		}
 	})
 });
 
+// Thanks Benjamin Cunningham for the great explanation at Medium (https://medium.com/letsboot/memory-game-built-with-jquery-ec6099618d67)
 var addCardListener = function () {
 
 	// Card flip

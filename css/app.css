@@ -2,11 +2,6 @@ html {
   box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
 
 html,
 body {
@@ -31,10 +26,15 @@ body {
 }
 
 h1 {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Press Start 2P', cursive;
   font-weight: bolder;
   font-weight: 300;
   padding-top: 10px;
+}
+
+.bar {
+  opacity: 0.2;
+  margin: 0 10px;
 }
 
 .deck {
@@ -48,12 +48,11 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 3em;
 }
 
 .deck .card {
-  height: 140px;
-  width: 140px;
+  height: 130px;
+  width: 130px;
   background: url("../img/memory_card.png");
   font-size: 0;
   color: #ffffff;
@@ -101,17 +100,32 @@ h1 {
   width: 100%;
   margin: 10px 0;
 }
+
 .score-panel .stars {
   margin: 0;
   padding: 0;
   display: inline-block;
   margin: 0 400px 0 0;
 }
+
 .score-panel .stars li {
   list-style: none;
   display: inline-block;
 }
+
 .score-panel .restart {
-  float: right;
   cursor: pointer;
+}
+
+.score-panel .restart i{
+  position: absolute;
+  opacity: 0.2;
+  font-size: 40px;
+  margin: -10px 0 0 -15px;
+}
+
+/* SweetAlert configuration */
+
+.swal2-container.swal2-shown {
+  background-color: white;
 }
