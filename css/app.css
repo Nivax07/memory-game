@@ -130,6 +130,10 @@ h1 {
   background-color: white;
 }
 
+.udacity-logo-mobile {
+  display: none;
+}
+
 @media only screen and (max-width: 600px){
   .deck {
     width: 90%;
@@ -178,6 +182,16 @@ h1 {
 }
 
 @media only screen and (max-width: 460px) {
+  .udacity-logo {
+    display: none;
+  }
+  .udacity-logo-mobile {
+    position: absolute;
+    display: block;
+    width: 90px;
+    top: 40px;
+    opacity: 0.2;
+  }
   .deck {
     width: 90%;
     min-height: 400px;
