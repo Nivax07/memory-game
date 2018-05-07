@@ -151,7 +151,7 @@ h1 {
   .deck .card {
     height: 100px;
     width: 100px;
-    background: url("../img/memory_card_mobile.png");
+    background: url("../img/memory_card_tablet.png");
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -182,7 +182,7 @@ h1 {
 }
 
 @media only screen and (max-width: 460px) {
-  .udacity-logo {
+  .udacity-logo { 
     display: none;
   }
   .udacity-logo-mobile {
