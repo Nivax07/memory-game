@@ -129,3 +129,97 @@ h1 {
 .swal2-container.swal2-shown {
   background-color: white;
 }
+
+@media only screen and (max-width: 600px){
+  .deck {
+    width: 90%;
+    min-height: 500px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .deck .card {
+    height: 100px;
+    width: 100px;
+    background: url("../img/memory_card_mobile.png");
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #ffffff;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  }
+
+  .score-panel .stars {
+    margin-right: 40px;
+    padding: 0;
+    display: inline-block;
+  }
+
+  .score-panel {
+    text-align: center;
+    width: 100%;
+    line-height: 50px;
+    margin: 10px 0;
+  }
+
+  .score-panel .restart i {
+    margin: 0 0 0 -15px;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .deck {
+    width: 90%;
+    min-height: 400px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .deck .card {
+    height: 75px;
+    width: 75px;
+    background: url("../img/memory_card_mobile.png");
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #ffffff;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  }
+
+  .score-panel .stars {
+    margin-right: 40px;
+    padding: 0;
+    display: inline-block;
+  }
+
+  .score-panel {
+    text-align: center;
+    width: 100%;
+    line-height: 50px;
+    margin: 10px 0;
+  }
+
+  .score-panel .restart i {
+    margin: 0 0 0 -15px;
+  }
+}

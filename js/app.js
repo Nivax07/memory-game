@@ -90,7 +90,7 @@ function endGame(moves, score) {
 		position: 'center',
 		confirmButtonColor: '#02ccba',
 		confirmButtonText: 'Play again!'
-	}).then((result) => {
+	}).then(result => {
 		if (result.value) {
 			swal({
 				title: 'New Game',
@@ -114,7 +114,7 @@ $restart.bind('click', function () {
 		confirmButtonColor: '#02ccba',
 		cancelButtonColor: '#aa7ecd',
 		confirmButtonText: 'Yes, Restart Game!'
-	}).then((result) => {
+	}).then(result => {
 		if (result.value) {
 			swal({
 				title: 'Restarted',
